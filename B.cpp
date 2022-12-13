@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 #define dbug printf("I am here\n");
-#define Fast ios_base::sync_with_stdio(false); cin.tie(0);
+#define Fast ios_base::sync_with_stdio(false); cin.tie(0); cout.tie(0);
 #define vs           v.size()
 #define ss           s.size()
 #define sot(v)       sort(v.begin(),v.end())
@@ -17,36 +17,22 @@
 #define mpp          make_pair
 #define Okay         0
 #define pi           3.14159
+#define endl    '\n'
 
-const int mx = 1e6+5;
+const int mx = 1e8+100;
 const int inf = 1e18;
-const int mod = 1e9;
+const int mod = 1e9+7;
 using namespace std;
 
-void solve() {
-    int n, mx = -1, mn = inf;
-    cin >> n;
-    vector<ii>v(n);
-    for(auto &it : v){
-        cin >> it.first >> it.second;
-        mx = max(mx, it.second);
-        mn = min(mn, it.first);
-    }
-    //cout << mx << " " << mn << endl;
-    for(int i=0; i<n; i++){
-        if(v[i].first == mn and v[i].second == mx){
-            cout << i+1 << endl;
-            return;
-        }
-    }
-    cout << -1 << endl;
+void solve(){
+
 }
 
 int32_t main(){
     Fast;
     int tst;
-//    cin >> tst;
-//   for(int i=1; i<=tst; i++)
+    cin >> tst;
+    for(int i=1; i<=tst; i++)
         solve();
     return Okay;
 }

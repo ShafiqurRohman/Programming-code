@@ -1,6 +1,21 @@
 #include<bits/stdc++.h>
+using namespace std;
+
+//debugger
+template<typename F,typename S>ostream&operator<<(ostream&os,const pair<F,S>&p){return os<<"("<<p.first<<", "<<p.second<<")";}
+template<typename T>ostream&operator<<(ostream&os,const vector<T>&v){os<<"{";for(auto it=v.begin();it!=v.end();++it){if(it!=v.begin())os<<", ";os<<*it;}return os<<"}";}
+template<typename T>ostream&operator<<(ostream&os,const set<T>&v){os<<"[";for(auto it=v.begin();it!=v.end();++it){if(it!=v.begin())os<<",";os<<*it;}return os<<"]";}
+template<typename T>ostream&operator<<(ostream&os,const multiset<T>&v) {os<<"[";for(auto it=v.begin();it!=v.end();++it){if(it!=v.begin())os<<", ";os<<*it;}return os<<"]";}
+template<typename F,typename S>ostream&operator<<(ostream&os,const map<F,S>&v){os<<"[";for(auto it=v.begin();it!=v.end();++it){if(it!=v.begin())os<<", ";os<<it->first<<" = "<<it->second;}return os<<"]";}
+#define dbg(args...) do {cerr << #args << " : "; faltu(args); } while(0)
+void faltu(){cerr << endl;}
+template<typename T>void faltu(T a[],int n){for(int i=0;i<n;++i)cerr<<a[i]<<' ';cerr<<endl;}
+template<typename T,typename...hello>void faltu(T arg,const hello&...rest){cerr<<arg<<' ';faltu(rest...);}
+
+//All define
+
 #define dbug printf("I am here\n");
-#define Fast ios_base::sync_with_stdio(false); cin.tie(0);
+#define Fast ios_base::sync_with_stdio(false); cin.tie(0); cout.tie(0);
 #define vs           v.size()
 #define ss           s.size()
 #define sot(v)       sort(v.begin(),v.end())
@@ -14,53 +29,46 @@
 #define ll           long long
 #define ull          unsigned long long
 #define pb           push_back
-#define mpp          make_pair
 #define Okay         0
-#define pi           3.14159
 
-const int mx = 2e5+100;
-const int cont = 1e18;
+#define endl         '\n'
+#define F            first
+#define S            second
+#define rall(a)      (a).rbegin(),(a).rend()
+#define sz(x)        (int)x.size()
+
+//Number theory related
+const int MOD = 1e9+7;
+int gcd ( int a, int b ) { return __gcd ( a, b ); }
+int lcm ( int a, int b ) { return a * ( b / gcd ( a, b ) ); }
+inline void normal(int &a) { a %= MOD; (a < 0) && (a += MOD); }
+inline int modMul(int a, int b) { a %= MOD, b %= MOD; normal(a), normal(b); return (a*b)%MOD; }
+inline int modAdd(int a, int b) { a %= MOD, b %= MOD; normal(a), normal(b); return (a+b)%MOD; }
+inline int modSub(int a, int b) { a %= MOD, b %= MOD; normal(a), normal(b); a -= b; normal(a); return a; }
+inline int modPow(int b, int p) { int r = 1; while(p) { if(p&1) r = modMul(r, b); b = modMul(b, b); p >>= 1; } return r; }
+inline int modInverse(int a) { return modPow(a, MOD-2); }
+inline int modDiv(int a, int b) { return modMul(a, modInverse(b)); }
+
+//constant variable
+const int MX = 1e7+1000;
+const int inf = 1e18;
 const int mod = 1e9+7;
-using namespace std;
+const double PI = acos(-1);
 
-vector<int>graph[mx], ans;
-int col[mx], color[mx];
-bool vis[mx];
+//code here start
 
-void dfs(int node){
-    vis[node] = 1;
-    if(color[col[node]] == 0)ans.pb(node);
-    color[col[node]]++;
-    for(auto child : graph[node]){
-        if(!vis[child]){
-            dfs(child);
-        }
-    }
-    color[col[node]]--;
-}
+
+
 
 void solve(){
-    int n;
-    cin >> n;
-    for(int i=1; i<=n; i++){
-        cin >> col[i];
-    }
-    for(int i=1; i<n; i++){
-        int a, b;
-        cin >> a >> b;
-        graph[a].pb(b);
-        graph[b].pb(a);
-    }
-    dfs(1);
-    sot(ans);
-    for(auto it : ans)cout << it << endl;
+
 }
 
 int32_t main(){
     Fast;
     int tst;
-//    cin>>tst;
-//    while(tst--)
-    solve();
+    cin >> tst;
+    for(int i=1; i<=tst; i++)
+        solve();
     return Okay;
 }

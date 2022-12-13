@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-int Partition(int *ar, int start, int last){
+int Partition(int ar[], int start, int last){
     int pivot = ar[last];
     int partition_index = start;
     for(int i=start; i<last;i++){
@@ -15,7 +15,7 @@ int Partition(int *ar, int start, int last){
     return partition_index;
 }
 
-void MyQuickSort(int *ar, int start, int last){
+void MyQuickSort(int ar[], int start, int last){
     if(start < last){
         int partitionIndex = Partition(ar, start, last);
         MyQuickSort(ar, start, partitionIndex-1);

@@ -89,13 +89,14 @@ void solve(){
     for(int i=1; i<=n; i++){//1 base index nia kaj kori.
         cin>>heap[i];
     }
-    build_heap(n);
+      build_heap(n);
 
     n = popMax(n);//max element ta pop kori.
     n = popMax(n);
 
     n = insert_node(n, 100);// new value push kori.
     n = insert_node(n, 20);
+    n = insert_node(n, 10);
 
     for(int i=1; i<=n; i++)cout<<heap[i]<<" ";// mul heap print kori.
     cout<<endl;

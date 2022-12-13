@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 #define dbug printf("I am here\n");
-#define Fast ios_base::sync_with_stdio(false); cin.tie(0);
+#define Fast ios_base::sync_with_stdio(false); cin.tie(0); cout.tie(0);
 #define vs           v.size()
 #define ss           s.size()
 #define sot(v)       sort(v.begin(),v.end())
@@ -17,36 +17,65 @@
 #define mpp          make_pair
 #define Okay         0
 #define pi           3.14159
+#define endl    '\n'
 
-const int mx = 1e6+5;
+const int mx = 1e8+100;
 const int inf = 1e18;
-const int mod = 1e9;
+const int mod = 1e9+7;
 using namespace std;
 
-void solve() {
-    int n, mx = inf, mn = -1;
-    cin >> n;
-    vector<ii>v(n);
-    for(auto &it : v){
-        cin >> it.first >> it.second;
-        mx = max(mx, it.second);
-        mn = min(mn, it.first);
-    }
-cout << mx << " " << 
+void solve(){
+    int n, q;
+    cin >> n >> q;
+    int on = 0, en = 0;
+    int osum = 0, esum = 0;
     for(int i=0; i<n; i++){
-        if(v[i].first == mn and v[i].second == mx){
-            cout << i+1 << endl;
-            return;
+        int a;
+        cin >> a;
+        if(a%2){
+            osum += a;
+            on++;
+        }
+        else{
+            en++;
+            esum += a;
         }
     }
-    cout << -1 << endl;
+    for(int i=0; i<q; i++){
+        int a, b;
+        cin >> a >> b;
+        if(a == 0){
+            int x = b*en;
+            esum += x;
+            if(b%2){
+                osum += esum;
+                esum = 0;
+                on += en;
+                en = 0;
+                cout << en <<endl;
+            }
+        }
+        else{
+            int x = b*on;
+            osum += x;
+            if(b%2){
+                esum += osum;
+                osum = 0;
+                en += on;
+                on = 0;
+            }
+        }
+        cout << "odd : " << osum << " even : " << esum << endl;
+        cout << "odd : " << on << " even : " << en << endl;
+        cout << esum + osum << endl;
+    }
 }
 
 int32_t main(){
     Fast;
     int tst;
-//    cin >> tst;
-//   for(int i=1; i<=tst; i++)
+    cin >> tst;
+    for(int i=1; i<=tst; i++)
         solve();
     return Okay;
 }

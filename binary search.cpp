@@ -16,14 +16,16 @@ int binarysearch(int arr[],int n,int a){
 }
 
 int main(){
-       int n,a;
-       scanf("%d",&n);
+       int n, a;
+       cin >> n;
        int arr[n+5];
        for(int i=0;i<n;i++){
-        scanf("%i",&arr[i]);
+        cin >> arr[i];
        }
-       scanf("%i",&a);
-       printf("%d",binarysearch(arr,n,a));
+       cin >> a;
+       int index = binarysearch(arr,n,a);
+       if(index != -1)cout << "The value found in the array at index : " << index << endl;
+       else cout << "Not Found" << endl;
 
         return 0;
-    }
+}

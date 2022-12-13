@@ -11,7 +11,7 @@ int main(){
    }
    else mp[s]++;
    }
-   for(auto it:mp){
+   for(auto it : mp){
             printf("%d %d",it.first,it.second);
    }
 return 0;

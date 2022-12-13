@@ -14,41 +14,36 @@
 #define mpp          make_pair
 #define Okay         0
 #define pi           3.14159
+#define endl    '\n'
 
 const int mx = 1e6;
 const int inf = 1e18;
 const int mod = 1e9+7;
 using namespace std;
 
-int n, arr[mx];
+int ss(string s){
+    return s.size();
+}
 
-int getMaxArea(){
-    stack<int> s;
-    s.push(-1);
-    int area = arr[0];
-    int i = 0;
-    vector<int> left_smaller(n, -1), right_smaller(n, n);
-    while(i<n){
-        while(!s.empty()&&s.top()!=-1&&arr[s.top()]>arr[i]){
-            right_smaller[s.top()] = i;
-            s.pop();
-        }
-        if(i>0&&arr[i]==arr[i-1]){
-            left_smaller[i] = left_smaller[i-1];
-        }else{
-            left_smaller[i] = s.top();
-        } 
-        s.push(i);
-        i++;
+bool isPossible(string s){
+    int len = ss(s);
+    if(len == 0 || len == 1) return true;
+    if(len%2 != 0){
+        return isPossible(s.substr(0, len -1));
     }
-    for(int j = 0; j<n; j++){
-        area = max(area, arr[j]*(right_smaller[j]-left_smaller[j]-1));
+    if(s.substr(0, len/2) == s.substr(len/2 ,len)){
+        return isPossible(s.substr(0, len/2));
     }
-    return area;
+    return false;
 }
 
 void solve(){
+    int n;
     cin >> n;
+    string s;
+    cin >> s;
+    if(isPossible(s))yes;
+    else no;
 }
 
 int32_t main() {

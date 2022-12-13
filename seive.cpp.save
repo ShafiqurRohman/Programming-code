@@ -1,0 +1,49 @@
+#include<bits/stdc++.h>
+#define pb push_back
+#define ll long long
+const int m = 10e6;
+using namespace std;
+bool ar[m+10];
+vector<int>prime;
+void seive(){
+    for(int i=4;i<m+10;i+=2)ar[i]=1;
+    for(int i=3;i*i<m+10;i+=2){
+        if(ar[i]==0){
+            for(int j=i*i ; j<m+10 ; j+=i+i){
+                ar[j]=1;
+            }
+        }
+    }
+    prime.pb(2);
+    for(int i=3;i<m+10;i+=2){
+        if(ar[i]==0)prime.pb(i);
+    }
+}
+
+int factorial(int n){
+    int j=1;
+    int k = prime.size();
+    for(int i=0; i<k && n!=1; i++){
+        if(n%prime[i]==0){
+            while(n%prime[i]==0){
+                j=0;
+                n= n/prime[i];
+                ans+=prime[i];
+            }
+        }
+    }
+    if(n!=1)
+        ans += n;
+    if(j!=0 && n==1)
+           factor.push_back(n);
+}
+
+int main(){
+    int a;
+    seive();
+    cin>>a;
+    for(int i=0;i<a;i++){
+        cout<<prime[i]<<" ";
+    }
+return 0;
+}

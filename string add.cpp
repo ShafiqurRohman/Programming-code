@@ -41,7 +41,8 @@ string doSum(string a, string b){
 int main(){
 
 string a,b;
-cin>>a>>b;
+char c;
+cin>>a>>c >> b;
 cout<<doSum(a,b)<<endl;
 
     return Okay ;

@@ -12,7 +12,7 @@ bool isprime[mx];
 void seive(){
     memset(isprime, true, sizeof(isprime));
 
-    for(int i=4;i<=mx;i+=2)isprime[i]=false;//eita na korleo hai laron ami pore 3 the loop chalaisi and 2 kore increment korsi.
+    for(int i=4;i<=mx;i+=2)isprime[i]=false;
 
     for(int i=3; i*i <= mx ; i+=2){
         if(isprime[i]){
